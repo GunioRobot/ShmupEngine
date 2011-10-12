@@ -18,6 +18,13 @@
 #define PLAYER_D_ACC PLAYER_ACC * HALFSQRT2
 #define BULLET_SPEED 2000
 
+#define KF_NONE		0
+#define KF_MOV_L	1 << 0
+#define KF_MOV_R	1 << 1
+#define KF_MOV_U	1 << 2
+#define KF_MOV_D	1 << 3
+#define KF_FIR_1	1 << 4
+
 void player_update(shmup_game *g, player *p, float dt);
 void player_fire(player *p);
 

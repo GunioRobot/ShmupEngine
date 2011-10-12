@@ -8,6 +8,7 @@ typedef struct {
 	vec2d pos;
 	vec2d vel;
 	vec2d acc;
+	short keyflags;
 } player;
 
 typedef struct {
@@ -33,11 +34,13 @@ typedef struct {
 	int network_type;
 	int window_width;
 	int window_height;
+	int num_players;
 	vec2d emitter;
 	vec2d gravity;
 	player player[4];
 	bpool *bpool;
 	ENetHost *host;
+	ENetPeer *peer;
 } shmup_game;
 
 #endif

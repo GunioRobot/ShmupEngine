@@ -32,7 +32,7 @@ enum NETWORK_TYPE {
 	SERVER
 };
 
-shmup_game * shmup_game_init(int network_type);
+shmup_game * shmup_game_init(int network_type, char *hostname);
 void shmup_game_run(shmup_game *g);
 void shmup_game_update(shmup_game *g, double t, double dt);
 void shmup_game_draw(shmup_game *g);

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
 #include <GL/glfw.h>
 
 #include "game.h"
@@ -8,28 +9,51 @@ int
 main(int argc, char **argv)
 {
 	int network_type;
+	int o;
+	char *hostname;
 	shmup_game *g;
 	GLFWvidmode d_mode;    
 
-	network_type = CLIENT;
-	for (int i=0; i<argc; i++) {
-		if (strcmp(argv[i], "-a") == 0) network_type = SERVER;
+	network_type = CLIENT;	
+	hostname = "localhost";
+	
+	while ((o = getopt (argc, argv, "sc:")) != -1) {
+	switch(o) {
+		case 's':
+			network_type = SERVER;
+			break;
+		case 'c':
+			network_type = CLIENT;
+			hostname = optarg;
+			break;
+		case '?':
+			if (optopt == 'c')
+				fprintf (stderr, "Option -%c requires an hostname.\n", optopt);
+			else if (isprint (optopt))
+				fprintf (stderr, "Unknown option `-%c'.\n", optopt);
+			else
+				fprintf (stderr,
+					 "Unknown option character `\\x%x'.\n", optopt);
+			return 1;
+		default:
+			abort();
 	}
-
+	}
+	
 	if(!glfwInit()) {
 		fprintf( stderr, "Failed to initialize GLFW\n" );
 		exit(EXIT_FAILURE);
 	}
 
 	glfwGetDesktopMode(&d_mode);
-	if(!glfwOpenWindow(1280, 800, d_mode.RedBits, d_mode.GreenBits, 
+	if(!glfwOpenWindow(640, 480, d_mode.RedBits, d_mode.GreenBits, 
 			   d_mode.BlueBits, 8, 8, 0, GLFW_WINDOW)) {
 		fprintf(stderr, "Failed to open GLFW window\n");
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}
 
-	g = shmup_game_init(network_type);
+	g = shmup_game_init(network_type, hostname);
 	
 	glfwSetWindowTitle("ShmupEngine");
 //	glfwSetWindowSizeCallback(resize);
