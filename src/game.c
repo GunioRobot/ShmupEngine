@@ -6,7 +6,7 @@
 #include "game.h"
 
 shmup_game *
-shmup_game_init()
+shmup_game_init(int network_type)
 {
 	ENetAddress e;
 	shmup_game *g;
@@ -14,6 +14,7 @@ shmup_game_init()
 	g = malloc(sizeof(shmup_game));
 	glfwGetWindowSize(&g->window_width, &g->window_height);
 	
+	g->network_type = network_type;
 	g->render_type = 2;
 	g->quit = 0;	
 	g->emitter = v2(g->window_width / 2, g->window_height / 2);
@@ -43,17 +44,16 @@ shmup_game_init()
 	if (g->network_type == SERVER) {
 		e.host = ENET_HOST_ANY;
 		e.port = 4000;
+		fprintf(stderr, "initializing server on port %d...\n", e.port);
 		g->host = enet_host_create(&e, 4, 2, 0, 0);
 	} else {
-		g->host = enet_host_create(NULL, 4, 2, 0, 0);
+		fprintf(stderr, "initializing client...\n");
+		g->host = enet_host_create(NULL, 1, 2, 0, 0);
 	}
 	
 	g->player[0].pos = v2(g->window_width/2, g->window_height/2);
 	g->player[0].vel = v2zero;
 	g->player[0].acc = v2zero;
-	
-//	fire(g, 1000, 0);
-//	fire(g, 1000, 1);
 	
 	return g;
 }
@@ -163,7 +163,14 @@ shmup_game_fire(shmup_game *g, int num, int col, vec2d pos, vec2d vel, vec2d acc
 void 
 shmup_game_update(shmup_game *g, double t, double dt)
 {				
-	
+
+//	ENetEvent event;
+//	while (enet_host_service(g->host, &event, 1000)) {
+//	}
+//	
+//	//	enet_packet_create(<#const void *#>, <#size_t#>, <#enet_uint32#>);
+//	//	enet_host_broadcast(ENetHost *, <#enet_uint8#>, <#ENetPacket *#>);		
+		
 	bullet *b;
 	static int mx, my;
 	glfwGetMousePos(&mx, &my);
@@ -177,18 +184,18 @@ shmup_game_update(shmup_game *g, double t, double dt)
 		shmup_game_fire(g, 40, 1, v2zero, v2zero, v2zero);
 	
 	if (glfwGetKey('1')) 
-		g->render_type=1;
+		g->render_type = 1;
 	
 	if (glfwGetKey('2')) 
-		g->render_type=2;
+		g->render_type = 2;
 		
 	player_update(g, &g->player[0], dt);
+		
+	b = g->bpool->bdata;
 	/* 
 	 * be careful with this pointer, as this data may be moved by the 
 	 * bpool_resize function! Make sure it points to the right place.
-	 */
-	 
-	b = g->bpool->bdata;
+	 */	 
 	
 	/* do updates */
 	for (int i=0; i < g->bpool->n_active; ++i) {
@@ -200,7 +207,10 @@ shmup_game_update(shmup_game *g, double t, double dt)
 		
 		if (!point_vs_aabb(b[i].pos, v2zero, v2(g->window_width, g->window_height)))
 			bpool_deactivate(g->bpool, i--); 
-	}	
+	}
+
+
+
 }
 
 /*
@@ -225,13 +235,13 @@ shmup_game_draw(shmup_game *g)
 	glBegin(GL_QUADS);
 	{
 		glColor4f(1.0, 1.0, 1.0, 1.0);
-		glVertex2d(-30, -10);
+		glVertex2d(-16, -10);
 		glColor4f(1.0, 1.0, 1.0, 1.0);
-		glVertex2d(30, -10);
+		glVertex2d(16, -10);
 		glColor4f(1.0, 1.0, 1.0, 1.0);
-		glVertex2d(30, 10);
+		glVertex2d(16, 10);
 		glColor4f(1.0, 1.0, 1.0, 1.0);
-		glVertex2d(-30, 10);
+		glVertex2d(-16, 10);
 	}
 	glEnd();
 //	glPopMatrix();

@@ -2,5 +2,6 @@
 *.swp
 shmup
 .DS_Store
-ShmupEngine*/
 work/
+lib/glfw*
+lib/enet/.libs

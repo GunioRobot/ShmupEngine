@@ -4,7 +4,13 @@
 #include <enet/enet.h>
 #include "vector.h"
 
-typedef struct bullet {
+typedef struct {
+	vec2d pos;
+	vec2d vel;
+	vec2d acc;
+} player;
+
+typedef struct {
 	vec2d pos;
 	vec2d vel;
 	vec2d acc;
@@ -13,7 +19,7 @@ typedef struct bullet {
 	float padding[2];
 } bullet;
 
-typedef struct bpool {
+typedef struct {
 	int size;
 	int n_active;	
 	GLuint tex[2];
@@ -21,13 +27,7 @@ typedef struct bpool {
 	bullet *bdata;
 } bpool;
 
-typedef struct player {
-	vec2d pos;
-	vec2d vel;
-	vec2d acc;
-} player;
-
-typedef struct shmup_game {
+typedef struct {
 	int quit;
 	int render_type;
 	int network_type;
@@ -39,7 +39,5 @@ typedef struct shmup_game {
 	bpool *bpool;
 	ENetHost *host;
 } shmup_game;
-
-
 
 #endif

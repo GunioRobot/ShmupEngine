@@ -7,24 +7,29 @@
 int
 main(int argc, char **argv)
 {
+	int network_type;
 	shmup_game *g;
 	GLFWvidmode d_mode;    
-	
+
+	network_type = CLIENT;
+	for (int i=0; i<argc; i++) {
+		if (strcmp(argv[i], "-a") == 0) network_type = SERVER;
+	}
+
 	if(!glfwInit()) {
 		fprintf( stderr, "Failed to initialize GLFW\n" );
 		exit(EXIT_FAILURE);
 	}
 
 	glfwGetDesktopMode(&d_mode);
-	//d_mode.Width/1.5, d_mode.Height/1.5
-	if(!glfwOpenWindow(800, 600, d_mode.RedBits, 
-	        d_mode.GreenBits, d_mode.BlueBits, 8, 8, 0, GLFW_WINDOW)) {
+	if(!glfwOpenWindow(1280, 800, d_mode.RedBits, d_mode.GreenBits, 
+			   d_mode.BlueBits, 8, 8, 0, GLFW_WINDOW)) {
 		fprintf(stderr, "Failed to open GLFW window\n");
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}
 
-	g = shmup_game_init();
+	g = shmup_game_init(network_type);
 	
 	glfwSetWindowTitle("ShmupEngine");
 //	glfwSetWindowSizeCallback(resize);
@@ -35,18 +40,11 @@ main(int argc, char **argv)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();   
 	glOrtho(0, g->window_width, 0, g->window_height, 100, -100);
-	glMatrixMode(GL_MODELVIEW);
-	
-	
-	
-	g->network_type = CLIENT;
-	for (int i=0; i<argc; ++i) {
-		if (strcmp("-a", argv[i])) g->network_type = SERVER;
-	}
-		
+	glMatrixMode(GL_MODELVIEW);	
+			
 	shmup_game_run(g);
 	shmup_game_close(g);
 	
-	glfwTerminate();	
+	glfwTerminate();
 	exit(EXIT_SUCCESS);
 }

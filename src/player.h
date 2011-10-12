@@ -11,7 +11,6 @@
 #include "common.h"
 #include "game.h"
 
-#define HALFSQRT2 0.707106781186548
 #define PLAYER_ACC 3000
 #define PLAYER_SPEED 300
 #define PLAYER_D_SPEED PLAYER_SPEED * HALFSQRT2
