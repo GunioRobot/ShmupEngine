@@ -2,6 +2,5 @@
 *.swp
 shmup
 .DS_Store
-lib/
 ShmupEngine*/
 work/
