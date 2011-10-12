@@ -6,17 +6,14 @@
 #include "game.h"
 
 shmup_game *
-shmup_game_init(int network_type, char *hostname)
+shmup_game_init(int width, int height)
 {
-	ENetEvent event;
-	ENetAddress address;
 	shmup_game *g;
 	
-	g = malloc(sizeof(shmup_game));
-	glfwGetWindowSize(&g->window_width, &g->window_height);
-	
-	g->network_type = network_type;
+	g = malloc(sizeof(shmup_game));	
 	g->render_type = 2;
+	g->window_width = width;
+	g->window_height = height;
 	g->quit = 0;	
 	g->emitter = v2(g->window_width / 2, g->window_height / 2);
 	g->gravity = v2(0, -250);	
@@ -46,7 +43,25 @@ shmup_game_init(int network_type, char *hostname)
 	g->player[0].pos = v2(g->window_width/2, g->window_height/2);
 	g->player[0].vel = v2zero;
 	g->player[0].acc = v2zero;
+	return g;
+}
+
+void
+shmup_game_init_gl(shmup_game *g)
+{
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();   
+	glOrtho(0, g->window_width, 0, g->window_height, 100, -100);
+	glMatrixMode(GL_MODELVIEW);	
+}
+
+void
+shmup_game_network_connect(shmup_game *g, int network_type, char *hostname)
+{
+	ENetEvent event;
+	ENetAddress address;
 	
+	g->network_type = network_type;
 	if (g->network_type == SERVER) {		
 		address.host = ENET_HOST_ANY;
 		address.port = 4000;		
@@ -74,8 +89,6 @@ shmup_game_init(int network_type, char *hostname)
 			printf("Connection to %s:4000 failed.\n", hostname);
 		}
 	}
-	
-	return g;
 }
 
 void 
@@ -151,7 +164,7 @@ shmup_game_fire(shmup_game *g, int num, int col, vec2d pos, vec2d vel, vec2d acc
 		
 		if (vel.x == 0 && vel.y == 0) {
 			speed = 300; //200.0 + (float)rand()/RAND_MAX * 400;
-			angle = ((float) i / num) * (M_PI * 2); // (float)rand()/RAND_MAX * M_PI * 2;
+			angle = ((float) i / num) * M_TWO_PI; // (float)rand()/RAND_MAX * M_PI * 2;
 			bvel = v2(cos(angle)*speed, sin(angle)*speed);
 		} else {
 			bvel = vel;
@@ -181,10 +194,15 @@ shmup_game_fire(shmup_game *g, int num, int col, vec2d pos, vec2d vel, vec2d acc
 
 void 
 shmup_game_update(shmup_game *g, double t, double dt)
-{	
+{
+	static int tick = 0;
+	static int mx, my;
 	int i;
 	ENetEvent event;
 	ENetPacket *packet;
+	bullet *b;
+	
+	tick++;
 	
 	while (enet_host_service(g->host, &event, 0) > 0) {
 		switch (event.type) {
@@ -192,23 +210,20 @@ shmup_game_update(shmup_game *g, double t, double dt)
 				printf("A new client connected from %x:%u.\n", 
 					event.peer->address.host,
 					event.peer->address.port);
-				/* Store any relevant client information here. */
+				
+//				sprintf(event.peer->data, "client %x.", event.peer->address.host);				
 				g->player[g->num_players].pos = v2(g->window_width/2, g->window_height/2);
 				g->player[g->num_players].vel = v2zero;
 				g->player[g->num_players].acc = v2zero;
 				g->num_players++;
-				
-				event.peer->data = "Client information";				
-				break;				
+				break;
 			case ENET_EVENT_TYPE_RECEIVE:
 				g->player[1].keyflags = (short) *event.packet->data;
-				/* printf("A packet of length %lu containing %s was received from %s on channel %u.\n",
-					event.packet->dataLength,
-					event.packet->data,
-					event.peer->data,
-					event.channelID); */
-				/* Clean up the packet now that we're done using it. */
-				enet_packet_destroy(event.packet);				
+//				event.packet->dataLength,
+//				event.packet->data,
+//				event.peer->data,
+//				event.channelID);
+				enet_packet_destroy(event.packet);
 				break;				
 			case ENET_EVENT_TYPE_DISCONNECT:
 				printf("%s disconected.\n", event.peer->data);
@@ -220,8 +235,6 @@ shmup_game_update(shmup_game *g, double t, double dt)
 		}
 	}
 
-	bullet *b;
-	static int mx, my;
 	glfwGetMousePos(&mx, &my);
 	g->emitter.x = (double) mx;
 	g->emitter.y = (double) g->window_height-my;

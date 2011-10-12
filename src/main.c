@@ -8,9 +8,11 @@
 int
 main(int argc, char **argv)
 {
-	int network_type;
-	int o;
+	const int width = 720;
+	const int height = 450;	
+	int network_type, o;
 	char *hostname;
+	
 	shmup_game *g;
 	GLFWvidmode d_mode;    
 
@@ -41,31 +43,29 @@ main(int argc, char **argv)
 	}
 	
 	if(!glfwInit()) {
-		fprintf( stderr, "Failed to initialize GLFW\n" );
+		fprintf(stderr, "Failed to initialize GLFW\n" );
 		exit(EXIT_FAILURE);
 	}
 
 	glfwGetDesktopMode(&d_mode);
-	if(!glfwOpenWindow(640, 480, d_mode.RedBits, d_mode.GreenBits, 
+	if(!glfwOpenWindow(width, height, d_mode.RedBits, d_mode.GreenBits, 
 			   d_mode.BlueBits, 8, 8, 0, GLFW_WINDOW)) {
 		fprintf(stderr, "Failed to open GLFW window\n");
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}
-
-	g = shmup_game_init(network_type, hostname);
 	
-	glfwSetWindowTitle("ShmupEngine");
-//	glfwSetWindowSizeCallback(resize);
+	char title[50];
+	sprintf(title, "ShmupEngine - %s", network_type ? "SERVER" : "CLIENT"); 
+	glfwSetWindowTitle(title);
+	/* glfwSetWindowSizeCallback(resize); */
 	glfwSwapInterval(1);
-	glfwSetMousePos(g->window_width/2, g->window_height/2);
+	glfwSetMousePos(width/2, height/2);
 	glfwEnable(GLFW_MOUSE_CURSOR);
 	
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();   
-	glOrtho(0, g->window_width, 0, g->window_height, 100, -100);
-	glMatrixMode(GL_MODELVIEW);	
-			
+	g = shmup_game_init(width, height);
+	shmup_game_network_connect(g, network_type, hostname);
+	shmup_game_init_gl(g);
 	shmup_game_run(g);
 	shmup_game_close(g);
 	

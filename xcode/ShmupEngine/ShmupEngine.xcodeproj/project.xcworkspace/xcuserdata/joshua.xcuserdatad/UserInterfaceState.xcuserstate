@@ -5334,7 +5334,7 @@
 		<string>IDEActiveWorkspaceTabController</string>
 		<string>IDEWorkspaceTabController_8C97A402-A017-46A6-AD19-88AD6F5B3F11</string>
 		<string>IDEWindowToolbarIsVisible</string>
-		<string>{{161, 4}, {1200, 874}}</string>
+		<string>{{-1, 4}, {1200, 874}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -9576,65 +9576,47 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>603</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>605</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>607</integer>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>$class</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>40</integer>
-			</dict>
-			<key>NS.objects</key>
-			<array>
-				<dict>
-					<key>CF$UID</key>
-					<integer>597</integer>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>$class</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>40</integer>
-			</dict>
-			<key>NS.objects</key>
-			<array>
-				<dict>
-					<key>CF$UID</key>
-					<integer>597</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>598</integer>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>$class</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>40</integer>
-			</dict>
-			<key>NS.objects</key>
-			<array>
-				<dict>
-					<key>CF$UID</key>
-					<integer>597</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
 					<integer>604</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>606</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>608</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>40</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>597</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>40</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>597</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>603</integer>
 				</dict>
 			</array>
 		</dict>
@@ -9657,7 +9639,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>606</integer>
+					<integer>605</integer>
 				</dict>
 			</array>
 		</dict>
@@ -9676,11 +9658,29 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>608</integer>
+					<integer>607</integer>
 				</dict>
 			</array>
 		</dict>
 		<string>Products</string>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>40</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>597</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>598</integer>
+				</dict>
+			</array>
+		</dict>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -10736,9 +10736,9 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>340096081.44691801</real>
-		<string>{133, 731}</string>
-		<string>{270, 0}</string>
+		<real>340099232.51847899</real>
+		<string>{0, 696}</string>
+		<string>{180, 0}</string>
 		<string>main()</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
 		<dict>
@@ -17393,9 +17393,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>340095737.41810399</real>
-		<string>{33, 754}</string>
-		<string>{558, 0}</string>
+		<real>340097365.75512499</real>
+		<string>{65, 875}</string>
+		<string>{707, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -18532,8 +18532,8 @@
 				</dict>
 			</array>
 		</dict>
-		<real>340094396.57498997</real>
-		<string>{120, 502}</string>
+		<real>340097366.871984</real>
+		<string>{108, 514}</string>
 		<string>{506, 0}</string>
 		<dict>
 			<key>$class</key>
@@ -19479,8 +19479,8 @@
 				</dict>
 			</array>
 		</dict>
-		<real>340093567.48374301</real>
-		<string>{16, 836}</string>
+		<real>340096780.88240999</real>
+		<string>{35, 850}</string>
 		<string>{115, 0}</string>
 		<dict>
 			<key>$class</key>
@@ -19904,9 +19904,9 @@
     s = 0;
 }</string>
 		</dict>
-		<real>340095736.08341002</real>
-		<string>{1101, 1195}</string>
-		<string>{1979, 0}</string>
+		<real>340099204.33036298</real>
+		<string>{0, 888}</string>
+		<string>{4187, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -20430,9 +20430,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>340096081.44609201</real>
-		<string>{133, 731}</string>
-		<string>{270, 0}</string>
+		<real>340099232.51786</real>
+		<string>{0, 696}</string>
+		<string>{180, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -22839,7 +22839,7 @@
 				<integer>1540</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>340096028.40371799</real>
+			<real>340099180.81162298</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -22850,7 +22850,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 12:07 AM</string>
+		<string>Today at 12:59 AM</string>
 		<integer>106</integer>
 		<dict>
 			<key>$class</key>
@@ -23078,7 +23078,7 @@
 				<integer>1559</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/joshua/Downloads/enet-1.3.3/unix.c</string>
+		<string>file://localhost/Users/joshua/Dropbox/Projects/games/ShmupEngine/src/game.c</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -23096,7 +23096,7 @@
 				<integer>1561</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/joshua/Dropbox/Projects/games/ShmupEngine/src/game.h</string>
+		<string>file://localhost/Users/joshua/Dropbox/Projects/games/ShmupEngine/src/common.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -23114,7 +23114,7 @@
 				<integer>1563</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/joshua/Dropbox/Projects/games/ShmupEngine/src/game.c</string>
+		<string>file://localhost/Users/joshua/Dropbox/Projects/games/ShmupEngine/src/game.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -23132,7 +23132,7 @@
 				<integer>1565</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/joshua/Dropbox/Projects/games/ShmupEngine/src/common.h</string>
+		<string>file://localhost/Users/joshua/Dropbox/Projects/games/ShmupEngine/src/player.c</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -23150,7 +23150,7 @@
 				<integer>1567</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/joshua/Dropbox/Projects/games/ShmupEngine/src/player.c</string>
+		<string>file://localhost/Users/joshua/Downloads/enet-1.3.3/unix.c</string>
 		<dict>
 			<key>$class</key>
 			<dict>
