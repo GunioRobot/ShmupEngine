@@ -1,4 +1,5 @@
 GAME_SOURCE=src
+GAME_LIB=lib
 EXECUTABLE=shmup
 
 CC=gcc
@@ -17,7 +18,12 @@ CC=clang
 LDFLAGS += -framework OpenGL -framework Cocoa
 endif
 
-SOURCES=$(wildcard $(GAME_SOURCE)/*.c)
+#MMM, Libraries
+CFLAGS+=-I$(GAME_LIB)
+SOURCES=$(wildcard $(GAME_LIB)/soil/*.c)
+
+SOURCES+=$(wildcard $(GAME_SOURCE)/*.c)
+
 OBJECTS=$(SOURCES:.c=.o)
 
 .PHONY : all clean
