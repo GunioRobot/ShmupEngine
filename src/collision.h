@@ -12,7 +12,7 @@
 #include "entity.h"
 #include "vector.h"
 
-static inline int 
+static inline int
 aabb_vs_aabb(vec2d a, vec2d a_size, vec2d b, vec2d b_size)
 {
 	if (a.x + a_size.x < b.x) return 0;
@@ -22,20 +22,20 @@ aabb_vs_aabb(vec2d a, vec2d a_size, vec2d b, vec2d b_size)
 	return 1;
 }
 
-static inline int 
+static inline int
 circle_vs_circle(vec2d a, double a_radius, vec2d b, double b_radius)
 {
 	if (v2lensq(v2sub(a, b)) > pow(a_radius + b_radius, 2)) return 0;
 	return 1;
 }
 
-static inline int 
+static inline int
 circle_vs_aabb(vec2d a, double a_radius, vec2d b, vec2d b_size)
 {
 	return 0;
 }
 
-static inline int 
+static inline int
 point_vs_aabb(vec2d a, vec2d b, vec2d b_size)
 {
 	if (a.x < b.x) return 0;

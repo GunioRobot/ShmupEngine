@@ -34,7 +34,7 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(LDFLAGS) $(LIBS) $(OBJECTS) -o $@
 
 .c.o:
-	$(CC) $(CFLAGS) $< -o $@ 
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm -f $(OBJECTS) $(EXECUTABLE) 
+	rm -f $(OBJECTS) $(EXECUTABLE)

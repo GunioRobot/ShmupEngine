@@ -1,4 +1,4 @@
-/** 
+/**
  @file host.c
  @brief ENet host management functions
 */
@@ -11,7 +11,7 @@
     @{
 */
 
-/** Creates a host for communicating to peers.  
+/** Creates a host for communicating to peers.
 
     @param address   the address at which other peers may connect to this host.  If NULL, then no peers may connect to the host.
     @param peerCount the maximum number of peers that should be allocated for the host.
@@ -90,7 +90,7 @@ enet_host_create (const ENetAddress * address, size_t peerCount, size_t channelL
     host -> receivedAddress.port = 0;
     host -> receivedData = NULL;
     host -> receivedDataLength = 0;
-     
+
     host -> totalSentData = 0;
     host -> totalSentPackets = 0;
     host -> totalReceivedData = 0;
@@ -153,7 +153,7 @@ enet_host_destroy (ENetHost * host)
     @param host host seeking the connection
     @param address destination for the connection
     @param channelCount number of channels to allocate
-    @param data user data supplied to the receiving host 
+    @param data user data supplied to the receiving host
     @returns a peer representing the foreign host on success, NULL on failure
     @remarks The peer returned will have not completed the connection until enet_host_service()
     notifies of an ENET_EVENT_TYPE_CONNECT event for the peer.
@@ -194,7 +194,7 @@ enet_host_connect (ENetHost * host, const ENetAddress * address, size_t channelC
       currentPeer -> windowSize = ENET_PROTOCOL_MAXIMUM_WINDOW_SIZE;
     else
       currentPeer -> windowSize = (host -> outgoingBandwidth /
-                                    ENET_PEER_WINDOW_SIZE_SCALE) * 
+                                    ENET_PEER_WINDOW_SIZE_SCALE) *
                                       ENET_PROTOCOL_MINIMUM_WINDOW_SIZE;
 
     if (currentPeer -> windowSize < ENET_PROTOCOL_MINIMUM_WINDOW_SIZE)
@@ -202,7 +202,7 @@ enet_host_connect (ENetHost * host, const ENetAddress * address, size_t channelC
     else
     if (currentPeer -> windowSize > ENET_PROTOCOL_MAXIMUM_WINDOW_SIZE)
       currentPeer -> windowSize = ENET_PROTOCOL_MAXIMUM_WINDOW_SIZE;
-         
+
     for (channel = currentPeer -> channels;
          channel < & currentPeer -> channels [channelCount];
          ++ channel)
@@ -218,7 +218,7 @@ enet_host_connect (ENetHost * host, const ENetAddress * address, size_t channelC
         channel -> usedReliableWindows = 0;
         memset (channel -> reliableWindows, 0, sizeof (channel -> reliableWindows));
     }
-        
+
     command.header.command = ENET_PROTOCOL_COMMAND_CONNECT | ENET_PROTOCOL_COMMAND_FLAG_ACKNOWLEDGE;
     command.header.channelID = 0xFF;
     command.connect.outgoingPeerID = ENET_HOST_TO_NET_16 (currentPeer -> incomingPeerID);
@@ -234,7 +234,7 @@ enet_host_connect (ENetHost * host, const ENetAddress * address, size_t channelC
     command.connect.packetThrottleDeceleration = ENET_HOST_TO_NET_32 (currentPeer -> packetThrottleDeceleration);
     command.connect.connectID = currentPeer -> connectID;
     command.connect.data = ENET_HOST_TO_NET_32 (data);
- 
+
     enet_peer_queue_outgoing_command (currentPeer, & command, NULL, 0, 0);
 
     return currentPeer;
@@ -355,7 +355,7 @@ enet_host_bandwidth_throttle (ENetHost * host)
     while (peersRemaining > 0 && needsAdjustment != 0)
     {
         needsAdjustment = 0;
-        
+
         if (dataTotal < bandwidth)
           throttle = ENET_PEER_PACKET_THROTTLE_SCALE;
         else
@@ -366,7 +366,7 @@ enet_host_bandwidth_throttle (ENetHost * host)
              ++ peer)
         {
             enet_uint32 peerBandwidth;
-            
+
             if ((peer -> state != ENET_PEER_STATE_CONNECTED && peer -> state != ENET_PEER_STATE_DISCONNECT_LATER) ||
                 peer -> incomingBandwidth == 0 ||
                 peer -> outgoingBandwidthThrottleEpoch == timeCurrent)
@@ -376,18 +376,18 @@ enet_host_bandwidth_throttle (ENetHost * host)
             if ((throttle * peer -> outgoingDataTotal) / ENET_PEER_PACKET_THROTTLE_SCALE <= peerBandwidth)
               continue;
 
-            peer -> packetThrottleLimit = (peerBandwidth * 
+            peer -> packetThrottleLimit = (peerBandwidth *
                                             ENET_PEER_PACKET_THROTTLE_SCALE) / peer -> outgoingDataTotal;
-            
+
             if (peer -> packetThrottleLimit == 0)
               peer -> packetThrottleLimit = 1;
-            
+
             if (peer -> packetThrottle > peer -> packetThrottleLimit)
               peer -> packetThrottle = peer -> packetThrottleLimit;
 
             peer -> outgoingBandwidthThrottleEpoch = timeCurrent;
 
-            
+
             needsAdjustment = 1;
             -- peersRemaining;
             bandwidth -= peerBandwidth;
@@ -409,7 +409,7 @@ enet_host_bandwidth_throttle (ENetHost * host)
         if (peer -> packetThrottle > peer -> packetThrottleLimit)
           peer -> packetThrottle = peer -> packetThrottleLimit;
     }
-    
+
     if (host -> recalculateBandwidthLimits)
     {
        host -> recalculateBandwidthLimits = 0;
@@ -439,7 +439,7 @@ enet_host_bandwidth_throttle (ENetHost * host)
                  continue;
 
                peer -> incomingBandwidthThrottleEpoch = timeCurrent;
- 
+
                needsAdjustment = 1;
                -- peersRemaining;
                bandwidth -= peer -> outgoingBandwidth;
@@ -463,7 +463,7 @@ enet_host_bandwidth_throttle (ENetHost * host)
              command.bandwidthLimit.incomingBandwidth = ENET_HOST_TO_NET_32 (bandwidthLimit);
 
            enet_peer_queue_outgoing_command (peer, & command, NULL, 0, 0);
-       } 
+       }
     }
 
     host -> bandwidthThrottleEpoch = timeCurrent;
@@ -476,5 +476,5 @@ enet_host_bandwidth_throttle (ENetHost * host)
         peer -> outgoingDataTotal = 0;
     }
 }
-    
+
 /** @} */

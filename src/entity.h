@@ -15,7 +15,7 @@ enum COLLISION_SHAPE {
 	AABB = 2
 };
 
-typedef struct entity {	
+typedef struct entity {
 	vec2d pos;
 	vec2d vel;
 	vec2d acc;

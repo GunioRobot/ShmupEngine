@@ -9,21 +9,21 @@
 #include "vector.h"
 #include "GL/glfw.h"
 
-typedef struct emitter {	
+typedef struct emitter {
 	//	bpool bpool;
 	vec2d pos;
-	int btype;	
-	
-	float direction;	
+	int btype;
+
+	float direction;
 	float rate;
-	float lin_speed;	
+	float lin_speed;
 	float angular_speed;
-	
+
 	float direction_variance;
-	float rate_variance;	
+	float rate_variance;
 	float lin_speed_variance;
 	float angular_speed_variance;
-	
+
 	GLuint tex_id;
 } emitter;
 

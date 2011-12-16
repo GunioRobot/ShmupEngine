@@ -37,7 +37,7 @@
 </div>
 <div class="contents">
 
-<p>ENet public header file.  
+<p>ENet public header file.
 <a href="#_details">More...</a></p>
 <code>#include &lt;stdlib.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="unix_8h_source.html">enet/unix.h</a>&quot;</code><br/>
@@ -122,83 +122,83 @@ typedef enum <a class="el" href="enet_8h.html#a3cf937b5cf72510493e0a7a2b71d3755"
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">An ENet event as returned by <a class="el" href="group__host.html#ga6ba501b3ee576e5578c8e6d1694ebd49" title="Waits for events on the host specified and shuttles packets between the host and its peers...">enet_host_service()</a>.  <a href="#a1ed78ad8f38bfa9055feab2f957718bd"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><b>_ENetSocketType</b> { <b>ENET_SOCKET_TYPE_STREAM</b> =  1, 
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><b>_ENetSocketType</b> { <b>ENET_SOCKET_TYPE_STREAM</b> =  1,
 <b>ENET_SOCKET_TYPE_DATAGRAM</b> =  2
  }</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><b>_ENetSocketWait</b> { <b>ENET_SOCKET_WAIT_NONE</b> =  0, 
-<b>ENET_SOCKET_WAIT_SEND</b> =  (1 &lt;&lt; 0), 
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><b>_ENetSocketWait</b> { <b>ENET_SOCKET_WAIT_NONE</b> =  0,
+<b>ENET_SOCKET_WAIT_SEND</b> =  (1 &lt;&lt; 0),
 <b>ENET_SOCKET_WAIT_RECEIVE</b> =  (1 &lt;&lt; 1)
  }</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><b>_ENetSocketOption</b> { <br/>
-&nbsp;&nbsp;<b>ENET_SOCKOPT_NONBLOCK</b> =  1, 
-<b>ENET_SOCKOPT_BROADCAST</b> =  2, 
-<b>ENET_SOCKOPT_RCVBUF</b> =  3, 
-<b>ENET_SOCKOPT_SNDBUF</b> =  4, 
+&nbsp;&nbsp;<b>ENET_SOCKOPT_NONBLOCK</b> =  1,
+<b>ENET_SOCKOPT_BROADCAST</b> =  2,
+<b>ENET_SOCKOPT_RCVBUF</b> =  3,
+<b>ENET_SOCKOPT_SNDBUF</b> =  4,
 <br/>
 &nbsp;&nbsp;<b>ENET_SOCKOPT_REUSEADDR</b> =  5
 <br/>
  }</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="enet_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a3d8d24eeb6e426826e88540d7c87d036">ENET_HOST_ANY</a> =  0, 
-<a class="el" href="enet_8h.html#adf764cbdea00d65edcd07bb9953ad2b7af40f3e48e3f87859c06d62023601eb57">ENET_HOST_BROADCAST</a> =  0xFFFFFFFF, 
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="enet_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a3d8d24eeb6e426826e88540d7c87d036">ENET_HOST_ANY</a> =  0,
+<a class="el" href="enet_8h.html#adf764cbdea00d65edcd07bb9953ad2b7af40f3e48e3f87859c06d62023601eb57">ENET_HOST_BROADCAST</a> =  0xFFFFFFFF,
 <a class="el" href="enet_8h.html#adf764cbdea00d65edcd07bb9953ad2b7a851f798e15c7f68c29a5755ac7d7cce4">ENET_PORT_ANY</a> =  0
  }</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="enet_8h.html#a9d1fc0ce6da0a057f18bd8b9c762003d">_ENetPacketFlag</a> { <a class="el" href="enet_8h.html#a9d1fc0ce6da0a057f18bd8b9c762003daab20e7088245ab2ddb7f11dcc9433738">ENET_PACKET_FLAG_RELIABLE</a> =  (1 &lt;&lt; 0), 
-<a class="el" href="enet_8h.html#a9d1fc0ce6da0a057f18bd8b9c762003dad230cc769ef9cc4c7c582b28f9c443fe">ENET_PACKET_FLAG_UNSEQUENCED</a> =  (1 &lt;&lt; 1), 
-<a class="el" href="enet_8h.html#a9d1fc0ce6da0a057f18bd8b9c762003daa6ce462752c36aad22e68ebefac3df8c">ENET_PACKET_FLAG_NO_ALLOCATE</a> =  (1 &lt;&lt; 2), 
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="enet_8h.html#a9d1fc0ce6da0a057f18bd8b9c762003d">_ENetPacketFlag</a> { <a class="el" href="enet_8h.html#a9d1fc0ce6da0a057f18bd8b9c762003daab20e7088245ab2ddb7f11dcc9433738">ENET_PACKET_FLAG_RELIABLE</a> =  (1 &lt;&lt; 0),
+<a class="el" href="enet_8h.html#a9d1fc0ce6da0a057f18bd8b9c762003dad230cc769ef9cc4c7c582b28f9c443fe">ENET_PACKET_FLAG_UNSEQUENCED</a> =  (1 &lt;&lt; 1),
+<a class="el" href="enet_8h.html#a9d1fc0ce6da0a057f18bd8b9c762003daa6ce462752c36aad22e68ebefac3df8c">ENET_PACKET_FLAG_NO_ALLOCATE</a> =  (1 &lt;&lt; 2),
 <a class="el" href="enet_8h.html#a9d1fc0ce6da0a057f18bd8b9c762003da7f79cd86eacd2543d6cde2eeccea995e">ENET_PACKET_FLAG_UNRELIABLE_FRAGMENT</a> =  (1 &lt;&lt; 3)
  }</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Packet flag bit constants. </p>
  <a href="enet_8h.html#a9d1fc0ce6da0a057f18bd8b9c762003d">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><b>_ENetPeerState</b> { <br/>
-&nbsp;&nbsp;<b>ENET_PEER_STATE_DISCONNECTED</b> =  0, 
-<b>ENET_PEER_STATE_CONNECTING</b> =  1, 
-<b>ENET_PEER_STATE_ACKNOWLEDGING_CONNECT</b> =  2, 
-<b>ENET_PEER_STATE_CONNECTION_PENDING</b> =  3, 
+&nbsp;&nbsp;<b>ENET_PEER_STATE_DISCONNECTED</b> =  0,
+<b>ENET_PEER_STATE_CONNECTING</b> =  1,
+<b>ENET_PEER_STATE_ACKNOWLEDGING_CONNECT</b> =  2,
+<b>ENET_PEER_STATE_CONNECTION_PENDING</b> =  3,
 <br/>
-&nbsp;&nbsp;<b>ENET_PEER_STATE_CONNECTION_SUCCEEDED</b> =  4, 
-<b>ENET_PEER_STATE_CONNECTED</b> =  5, 
-<b>ENET_PEER_STATE_DISCONNECT_LATER</b> =  6, 
-<b>ENET_PEER_STATE_DISCONNECTING</b> =  7, 
+&nbsp;&nbsp;<b>ENET_PEER_STATE_CONNECTION_SUCCEEDED</b> =  4,
+<b>ENET_PEER_STATE_CONNECTED</b> =  5,
+<b>ENET_PEER_STATE_DISCONNECT_LATER</b> =  6,
+<b>ENET_PEER_STATE_DISCONNECTING</b> =  7,
 <br/>
-&nbsp;&nbsp;<b>ENET_PEER_STATE_ACKNOWLEDGING_DISCONNECT</b> =  8, 
+&nbsp;&nbsp;<b>ENET_PEER_STATE_ACKNOWLEDGING_DISCONNECT</b> =  8,
 <b>ENET_PEER_STATE_ZOMBIE</b> =  9
 <br/>
  }</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <br/>
-&nbsp;&nbsp;<b>ENET_HOST_RECEIVE_BUFFER_SIZE</b> =  256 * 1024, 
-<b>ENET_HOST_SEND_BUFFER_SIZE</b> =  256 * 1024, 
-<b>ENET_HOST_BANDWIDTH_THROTTLE_INTERVAL</b> =  1000, 
-<b>ENET_HOST_DEFAULT_MTU</b> =  1400, 
+&nbsp;&nbsp;<b>ENET_HOST_RECEIVE_BUFFER_SIZE</b> =  256 * 1024,
+<b>ENET_HOST_SEND_BUFFER_SIZE</b> =  256 * 1024,
+<b>ENET_HOST_BANDWIDTH_THROTTLE_INTERVAL</b> =  1000,
+<b>ENET_HOST_DEFAULT_MTU</b> =  1400,
 <br/>
-&nbsp;&nbsp;<b>ENET_PEER_DEFAULT_ROUND_TRIP_TIME</b> =  500, 
-<b>ENET_PEER_DEFAULT_PACKET_THROTTLE</b> =  32, 
-<b>ENET_PEER_PACKET_THROTTLE_SCALE</b> =  32, 
-<b>ENET_PEER_PACKET_THROTTLE_COUNTER</b> =  7, 
+&nbsp;&nbsp;<b>ENET_PEER_DEFAULT_ROUND_TRIP_TIME</b> =  500,
+<b>ENET_PEER_DEFAULT_PACKET_THROTTLE</b> =  32,
+<b>ENET_PEER_PACKET_THROTTLE_SCALE</b> =  32,
+<b>ENET_PEER_PACKET_THROTTLE_COUNTER</b> =  7,
 <br/>
-&nbsp;&nbsp;<b>ENET_PEER_PACKET_THROTTLE_ACCELERATION</b> =  2, 
-<b>ENET_PEER_PACKET_THROTTLE_DECELERATION</b> =  2, 
-<b>ENET_PEER_PACKET_THROTTLE_INTERVAL</b> =  5000, 
-<b>ENET_PEER_PACKET_LOSS_SCALE</b> =  (1 &lt;&lt; 16), 
+&nbsp;&nbsp;<b>ENET_PEER_PACKET_THROTTLE_ACCELERATION</b> =  2,
+<b>ENET_PEER_PACKET_THROTTLE_DECELERATION</b> =  2,
+<b>ENET_PEER_PACKET_THROTTLE_INTERVAL</b> =  5000,
+<b>ENET_PEER_PACKET_LOSS_SCALE</b> =  (1 &lt;&lt; 16),
 <br/>
-&nbsp;&nbsp;<b>ENET_PEER_PACKET_LOSS_INTERVAL</b> =  10000, 
-<b>ENET_PEER_WINDOW_SIZE_SCALE</b> =  64 * 1024, 
-<b>ENET_PEER_TIMEOUT_LIMIT</b> =  32, 
-<b>ENET_PEER_TIMEOUT_MINIMUM</b> =  5000, 
+&nbsp;&nbsp;<b>ENET_PEER_PACKET_LOSS_INTERVAL</b> =  10000,
+<b>ENET_PEER_WINDOW_SIZE_SCALE</b> =  64 * 1024,
+<b>ENET_PEER_TIMEOUT_LIMIT</b> =  32,
+<b>ENET_PEER_TIMEOUT_MINIMUM</b> =  5000,
 <br/>
-&nbsp;&nbsp;<b>ENET_PEER_TIMEOUT_MAXIMUM</b> =  30000, 
-<b>ENET_PEER_PING_INTERVAL</b> =  500, 
-<b>ENET_PEER_UNSEQUENCED_WINDOWS</b> =  64, 
-<b>ENET_PEER_UNSEQUENCED_WINDOW_SIZE</b> =  1024, 
+&nbsp;&nbsp;<b>ENET_PEER_TIMEOUT_MAXIMUM</b> =  30000,
+<b>ENET_PEER_PING_INTERVAL</b> =  500,
+<b>ENET_PEER_UNSEQUENCED_WINDOWS</b> =  64,
+<b>ENET_PEER_UNSEQUENCED_WINDOW_SIZE</b> =  1024,
 <br/>
-&nbsp;&nbsp;<b>ENET_PEER_FREE_UNSEQUENCED_WINDOWS</b> =  32, 
-<b>ENET_PEER_RELIABLE_WINDOWS</b> =  16, 
-<b>ENET_PEER_RELIABLE_WINDOW_SIZE</b> =  0x1000, 
+&nbsp;&nbsp;<b>ENET_PEER_FREE_UNSEQUENCED_WINDOWS</b> =  32,
+<b>ENET_PEER_RELIABLE_WINDOWS</b> =  16,
+<b>ENET_PEER_RELIABLE_WINDOW_SIZE</b> =  0x1000,
 <b>ENET_PEER_FREE_RELIABLE_WINDOWS</b> =  8
 <br/>
  }</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="enet_8h.html#a3cf937b5cf72510493e0a7a2b71d3755">_ENetEventType</a> { <a class="el" href="enet_8h.html#a3cf937b5cf72510493e0a7a2b71d3755ad76c1d9192a5c6ac60a3820e3d7379c5">ENET_EVENT_TYPE_NONE</a> =  0, 
-<a class="el" href="enet_8h.html#a3cf937b5cf72510493e0a7a2b71d3755aefd9fa36297e41ca4c1cbcfdeb7e4a9d">ENET_EVENT_TYPE_CONNECT</a> =  1, 
-<a class="el" href="enet_8h.html#a3cf937b5cf72510493e0a7a2b71d3755a4fa47af84cf901810510aeba077a1c2f">ENET_EVENT_TYPE_DISCONNECT</a> =  2, 
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="enet_8h.html#a3cf937b5cf72510493e0a7a2b71d3755">_ENetEventType</a> { <a class="el" href="enet_8h.html#a3cf937b5cf72510493e0a7a2b71d3755ad76c1d9192a5c6ac60a3820e3d7379c5">ENET_EVENT_TYPE_NONE</a> =  0,
+<a class="el" href="enet_8h.html#a3cf937b5cf72510493e0a7a2b71d3755aefd9fa36297e41ca4c1cbcfdeb7e4a9d">ENET_EVENT_TYPE_CONNECT</a> =  1,
+<a class="el" href="enet_8h.html#a3cf937b5cf72510493e0a7a2b71d3755a4fa47af84cf901810510aeba077a1c2f">ENET_EVENT_TYPE_DISCONNECT</a> =  2,
 <a class="el" href="enet_8h.html#a3cf937b5cf72510493e0a7a2b71d3755a67d928ca38b289db53ec9f56c91c5d9d">ENET_EVENT_TYPE_RECEIVE</a> =  3
  }</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>An ENet event type, as specified in <a class="el" href="enet_8h.html#a1ed78ad8f38bfa9055feab2f957718bd">ENetEvent</a>. </p>

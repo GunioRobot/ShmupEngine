@@ -316,7 +316,7 @@ clean-libLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
-libenet.la: $(libenet_la_OBJECTS) $(libenet_la_DEPENDENCIES) 
+libenet.la: $(libenet_la_OBJECTS) $(libenet_la_DEPENDENCIES)
 	$(libenet_la_LINK) -rpath $(libdir) $(libenet_la_OBJECTS) $(libenet_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:

@@ -22,7 +22,7 @@ typedef struct {
 
 typedef struct {
 	int size;
-	int n_active;	
+	int n_active;
 	GLuint tex[2];
 	GLuint prog;
 	bullet *bdata;

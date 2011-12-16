@@ -7,7 +7,7 @@ ENet does not use any significant global variables, the vast majority
 of state is encapsulated in the ENetHost structure.  As such, as long
 as the application guards access to this structure, then ENet should
 operate fine in a multithreaded environment.
-   
+
 @section Q2 Isn't ENet just re-inventing TCP?!  What's the point?
 
 In a perfect world, that would be true.  But as many have found, using

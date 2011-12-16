@@ -125,17 +125,17 @@ CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPP = gcc -E
-CPPFLAGS = 
+CPPFLAGS =
 CYGPATH_W = echo
 DEFS = -DPACKAGE_NAME=\"libenet\" -DPACKAGE_TARNAME=\"libenet\" -DPACKAGE_VERSION=\"1.3.3\" -DPACKAGE_STRING=\"libenet\ 1.3.3\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DPACKAGE=\"libenet\" -DVERSION=\"1.3.3\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_DLFCN_H=1 -DLT_OBJDIR=\".libs/\" -DHAS_POLL=1 -DHAS_FCNTL=1 -DHAS_INET_PTON=1 -DHAS_INET_NTOP=1 -DHAS_MSGHDR_FLAGS=1 -DHAS_SOCKLEN_T=1
 DEPDIR = .deps
 DSYMUTIL = dsymutil
-DUMPBIN = 
+DUMPBIN =
 ECHO_C = \c
-ECHO_N = 
-ECHO_T = 
+ECHO_N =
+ECHO_T =
 EGREP = /usr/bin/grep -E
-EXEEXT = 
+EXEEXT =
 FGREP = /usr/bin/grep -F
 GREP = /usr/bin/grep
 INSTALL = /usr/bin/install -c
@@ -144,13 +144,13 @@ INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LD = /usr/libexec/gcc/i686-apple-darwin10/4.2.1/ld
-LDFLAGS = 
-LIBOBJS = 
-LIBS = 
+LDFLAGS =
+LIBOBJS =
+LIBS =
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = lipo
 LN_S = ln -s
-LTLIBOBJS = 
+LTLIBOBJS =
 MAKEINFO = ${SHELL} /Users/mjard/workspace/ShmupEngine/lib/enet/missing --run makeinfo
 MKDIR_P = ./install-sh -c -d
 NM = /usr/bin/nm
@@ -160,16 +160,16 @@ OBJEXT = o
 OTOOL = otool
 OTOOL64 = :
 PACKAGE = libenet
-PACKAGE_BUGREPORT = 
+PACKAGE_BUGREPORT =
 PACKAGE_NAME = libenet
 PACKAGE_STRING = libenet 1.3.3
 PACKAGE_TARNAME = libenet
-PACKAGE_URL = 
+PACKAGE_URL =
 PACKAGE_VERSION = 1.3.3
 PATH_SEPARATOR = :
 RANLIB = ranlib
 SED = /usr/bin/sed
-SET_MAKE = 
+SET_MAKE =
 SHELL = /bin/sh
 STRIP = strip
 VERSION = 1.3.3
@@ -178,15 +178,15 @@ abs_srcdir = /Users/mjard/workspace/ShmupEngine/lib/enet
 abs_top_builddir = /Users/mjard/workspace/ShmupEngine/lib/enet
 abs_top_srcdir = /Users/mjard/workspace/ShmupEngine/lib/enet
 ac_ct_CC = gcc
-ac_ct_DUMPBIN = 
+ac_ct_DUMPBIN =
 am__include = include
 am__leading_dot = .
-am__quote = 
+am__quote =
 am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
 bindir = ${exec_prefix}/bin
 build = x86_64-apple-darwin10.8.0
-build_alias = 
+build_alias =
 build_cpu = x86_64
 build_os = darwin10.8.0
 build_vendor = apple
@@ -197,7 +197,7 @@ docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
 host = x86_64-apple-darwin10.8.0
-host_alias = 
+host_alias =
 host_cpu = x86_64
 host_os = darwin10.8.0
 host_vendor = apple
@@ -221,8 +221,8 @@ sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
 sysconfdir = ${prefix}/etc
-target_alias = 
-top_build_prefix = 
+target_alias =
+top_build_prefix =
 top_builddir = .
 top_srcdir = .
 pkgconfigdir = $(libdir)/pkgconfig
@@ -316,7 +316,7 @@ clean-libLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
-libenet.la: $(libenet_la_OBJECTS) $(libenet_la_DEPENDENCIES) 
+libenet.la: $(libenet_la_OBJECTS) $(libenet_la_DEPENDENCIES)
 	$(libenet_la_LINK) -rpath $(libdir) $(libenet_la_OBJECTS) $(libenet_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:

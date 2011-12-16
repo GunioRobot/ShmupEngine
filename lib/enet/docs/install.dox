@@ -28,7 +28,7 @@ is linked in.
 @section Windows Microsoft Windows
 
 There is an included MSVC 6 project (enet.dsp) which you may use to
-build a suitable library file. Alternatively, you may simply drag all 
+build a suitable library file. Alternatively, you may simply drag all
 the ENet source files into your main project.
 
 You will have to link to the Winsock2 libraries, so make sure to add
@@ -45,7 +45,7 @@ or "Release/" directory, depending on which configuration you have
 selected to build. By default, it should produce "Debug/enet.lib".
 
 You may then copy the resulting "enet.lib" file and the header files
-found in the "include/" directory to your other projects and add it to 
+found in the "include/" directory to your other projects and add it to
 their library lists. Make sure to also link against "ws2_32.lib" and
 "winmm.lib" as described above.
 

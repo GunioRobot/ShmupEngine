@@ -39,7 +39,7 @@ void shmup_game_run(shmup_game *g);
 void shmup_game_update(shmup_game *g, double t, double dt);
 void shmup_game_draw(shmup_game *g);
 void shmup_game_close(shmup_game *g);
-void shmup_game_fire(shmup_game *g, int num, int col, 
+void shmup_game_fire(shmup_game *g, int num, int col,
 		     vec2d pos, vec2d vel, vec2d acc);
 
 #endif

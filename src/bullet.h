@@ -20,7 +20,7 @@ enum B_TYPE {
 	B_BOUNCE,	// pos, vel, acc, bounces when hits solid obsatcles
 	B_WAVE,		// pos, direction, flies in a sine wave pattern
 	B_CHASE,	// pos, vel, target, accelerates towards target
-	B_BEAM,		// pos, direction, fires instant ray 
+	B_BEAM,		// pos, direction, fires instant ray
 	B_LUA		// pos, vel, acc, checks with lua for instructions
 };
 

@@ -1,4 +1,4 @@
-/** 
+/**
  @file  peer.c
  @brief ENet peer management functions
 */
@@ -6,7 +6,7 @@
 #define ENET_BUILDING_LIB 1
 #include "enet/enet.h"
 
-/** @defgroup peer ENet peer functions 
+/** @defgroup peer ENet peer functions
     @{
 */
 
@@ -18,23 +18,23 @@
     The lowest mean round trip time from the sending of a reliable packet to the
     receipt of its acknowledgement is measured over an amount of time specified by
     the interval parameter in milliseconds.  If a measured round trip time happens to
-    be significantly less than the mean round trip time measured over the interval, 
+    be significantly less than the mean round trip time measured over the interval,
     then the throttle probability is increased to allow more traffic by an amount
     specified in the acceleration parameter, which is a ratio to the ENET_PEER_PACKET_THROTTLE_SCALE
     constant.  If a measured round trip time happens to be significantly greater than
     the mean round trip time measured over the interval, then the throttle probability
     is decreased to limit traffic by an amount specified in the deceleration parameter, which
     is a ratio to the ENET_PEER_PACKET_THROTTLE_SCALE constant.  When the throttle has
-    a value of ENET_PEER_PACKET_THROTTLE_SCALE, on unreliable packets are dropped by 
+    a value of ENET_PEER_PACKET_THROTTLE_SCALE, on unreliable packets are dropped by
     ENet, and so 100% of all unreliable packets will be sent.  When the throttle has a
     value of 0, all unreliable packets are dropped by ENet, and so 0% of all unreliable
     packets will be sent.  Intermediate values for the throttle represent intermediate
     probabilities between 0% and 100% of unreliable packets being sent.  The bandwidth
-    limits of the local and foreign hosts are taken into account to determine a 
+    limits of the local and foreign hosts are taken into account to determine a
     sensible limit for the throttle probability above which it should not raise even in
     the best of conditions.
 
-    @param peer peer to configure 
+    @param peer peer to configure
     @param interval interval, in milliseconds, over which to measure lowest mean RTT; the default value is ENET_PEER_PACKET_THROTTLE_INTERVAL.
     @param acceleration rate at which to increase the throttle probability as mean RTT declines
     @param deceleration rate at which to decrease the throttle probability as mean RTT increases
@@ -117,7 +117,7 @@ enet_peer_send (ENetPeer * peer, enet_uint8 channelID, ENetPacket * packet)
              fragmentNumber,
              fragmentOffset;
       enet_uint8 commandNumber;
-      enet_uint16 startSequenceNumber; 
+      enet_uint16 startSequenceNumber;
       ENetList fragments;
       ENetOutgoingCommand * fragment;
 
@@ -132,7 +132,7 @@ enet_peer_send (ENetPeer * peer, enet_uint8 channelID, ENetPacket * packet)
          commandNumber = ENET_PROTOCOL_COMMAND_SEND_FRAGMENT | ENET_PROTOCOL_COMMAND_FLAG_ACKNOWLEDGE;
          startSequenceNumber = ENET_HOST_TO_NET_16 (channel -> outgoingReliableSequenceNumber + 1);
       }
-        
+
       enet_list_clear (& fragments);
 
       for (fragmentNumber = 0,
@@ -150,13 +150,13 @@ enet_peer_send (ENetPeer * peer, enet_uint8 channelID, ENetPacket * packet)
             while (! enet_list_empty (& fragments))
             {
                fragment = (ENetOutgoingCommand *) enet_list_remove (enet_list_begin (& fragments));
-               
+
                enet_free (fragment);
             }
-            
+
             return -1;
          }
-         
+
          fragment -> fragmentOffset = fragmentOffset;
          fragment -> fragmentLength = fragmentLength;
          fragment -> packet = packet;
@@ -168,7 +168,7 @@ enet_peer_send (ENetPeer * peer, enet_uint8 channelID, ENetPacket * packet)
          fragment -> command.sendFragment.fragmentNumber = ENET_HOST_TO_NET_32 (fragmentNumber);
          fragment -> command.sendFragment.totalLength = ENET_HOST_TO_NET_32 (packet -> dataLength);
          fragment -> command.sendFragment.fragmentOffset = ENET_NET_TO_HOST_32 (fragmentOffset);
-        
+
          enet_list_insert (enet_list_end (& fragments), fragment);
       }
 
@@ -177,7 +177,7 @@ enet_peer_send (ENetPeer * peer, enet_uint8 channelID, ENetPacket * packet)
       while (! enet_list_empty (& fragments))
       {
          fragment = (ENetOutgoingCommand *) enet_list_remove (enet_list_begin (& fragments));
- 
+
          enet_peer_setup_outgoing_command (peer, fragment);
       }
 
@@ -191,7 +191,7 @@ enet_peer_send (ENetPeer * peer, enet_uint8 channelID, ENetPacket * packet)
       command.header.command = ENET_PROTOCOL_COMMAND_SEND_UNSEQUENCED | ENET_PROTOCOL_COMMAND_FLAG_UNSEQUENCED;
       command.sendUnsequenced.dataLength = ENET_HOST_TO_NET_16 (packet -> dataLength);
    }
-   else 
+   else
    if (packet -> flags & ENET_PACKET_FLAG_RELIABLE || channel -> outgoingUnreliableSequenceNumber >= 0xFFFF)
    {
       command.header.command = ENET_PROTOCOL_COMMAND_SEND_RELIABLE | ENET_PROTOCOL_COMMAND_FLAG_ACKNOWLEDGE;
@@ -219,7 +219,7 @@ enet_peer_receive (ENetPeer * peer, enet_uint8 * channelID)
 {
    ENetIncomingCommand * incomingCommand;
    ENetPacket * packet;
-   
+
    if (enet_list_empty (& peer -> dispatchedCommands))
      return NULL;
 
@@ -264,8 +264,8 @@ enet_peer_reset_outgoing_commands (ENetList * queue)
 static void
 enet_peer_remove_incoming_commands (ENetList * queue, ENetListIterator startCommand, ENetListIterator endCommand)
 {
-    ENetListIterator currentCommand;    
-    
+    ENetListIterator currentCommand;
+
     for (currentCommand = startCommand; currentCommand != endCommand; )
     {
        ENetIncomingCommand * incomingCommand = (ENetIncomingCommand *) currentCommand;
@@ -273,7 +273,7 @@ enet_peer_remove_incoming_commands (ENetList * queue, ENetListIterator startComm
        currentCommand = enet_list_next (currentCommand);
 
        enet_list_remove (& incomingCommand -> incomingCommandList);
- 
+
        if (incomingCommand -> packet != NULL)
        {
           -- incomingCommand -> packet -> referenceCount;
@@ -294,7 +294,7 @@ enet_peer_reset_incoming_commands (ENetList * queue)
 {
     enet_peer_remove_incoming_commands(queue, enet_list_begin (queue), enet_list_end(queue));
 }
- 
+
 void
 enet_peer_reset_queues (ENetPeer * peer)
 {
@@ -383,13 +383,13 @@ enet_peer_reset (ENetPeer * peer)
     peer -> eventData = 0;
 
     memset (peer -> unsequencedWindow, 0, sizeof (peer -> unsequencedWindow));
-    
+
     enet_peer_reset_queues (peer);
 }
 
 /** Sends a ping request to a peer.
     @param peer destination for the ping request
-    @remarks ping requests factor into the mean round trip time as designated by the 
+    @remarks ping requests factor into the mean round trip time as designated by the
     roundTripTime field in the ENetPeer structure.  Enet automatically pings all connected
     peers at regular intervals, however, this function may be called to ensure more
     frequent ping requests.
@@ -404,7 +404,7 @@ enet_peer_ping (ENetPeer * peer)
 
     command.header.command = ENET_PROTOCOL_COMMAND_PING | ENET_PROTOCOL_COMMAND_FLAG_ACKNOWLEDGE;
     command.header.channelID = 0xFF;
-   
+
     enet_peer_queue_outgoing_command (peer, & command, NULL, 0, 0);
 }
 
@@ -466,8 +466,8 @@ enet_peer_disconnect (ENetPeer * peer, enet_uint32 data)
     if (peer -> state == ENET_PEER_STATE_CONNECTED || peer -> state == ENET_PEER_STATE_DISCONNECT_LATER)
       command.header.command |= ENET_PROTOCOL_COMMAND_FLAG_ACKNOWLEDGE;
     else
-      command.header.command |= ENET_PROTOCOL_COMMAND_FLAG_UNSEQUENCED;      
-    
+      command.header.command |= ENET_PROTOCOL_COMMAND_FLAG_UNSEQUENCED;
+
     enet_peer_queue_outgoing_command (peer, & command, NULL, 0, 0);
 
     if (peer -> state == ENET_PEER_STATE_CONNECTED || peer -> state == ENET_PEER_STATE_DISCONNECT_LATER)
@@ -487,10 +487,10 @@ enet_peer_disconnect (ENetPeer * peer, enet_uint32 data)
 */
 void
 enet_peer_disconnect_later (ENetPeer * peer, enet_uint32 data)
-{   
-    if ((peer -> state == ENET_PEER_STATE_CONNECTED || peer -> state == ENET_PEER_STATE_DISCONNECT_LATER) && 
+{
+    if ((peer -> state == ENET_PEER_STATE_CONNECTED || peer -> state == ENET_PEER_STATE_DISCONNECT_LATER) &&
         ! (enet_list_empty (& peer -> outgoingReliableCommands) &&
-           enet_list_empty (& peer -> outgoingUnreliableCommands) && 
+           enet_list_empty (& peer -> outgoingUnreliableCommands) &&
            enet_list_empty (& peer -> sentReliableCommands)))
     {
         peer -> state = ENET_PEER_STATE_DISCONNECT_LATER;
@@ -526,9 +526,9 @@ enet_peer_queue_acknowledgement (ENetPeer * peer, const ENetProtocol * command, 
 
     acknowledgement -> sentTime = sentTime;
     acknowledgement -> command = * command;
-    
+
     enet_list_insert (enet_list_end (& peer -> acknowledgements), acknowledgement);
-    
+
     return acknowledgement;
 }
 
@@ -567,11 +567,11 @@ enet_peer_setup_outgoing_command (ENetPeer * peer, ENetOutgoingCommand * outgoin
     {
        if (outgoingCommand -> fragmentOffset == 0)
          ++ channel -> outgoingUnreliableSequenceNumber;
-        
+
        outgoingCommand -> reliableSequenceNumber = channel -> outgoingReliableSequenceNumber;
        outgoingCommand -> unreliableSequenceNumber = channel -> outgoingUnreliableSequenceNumber;
     }
-   
+
     outgoingCommand -> sendAttempts = 0;
     outgoingCommand -> sentTime = 0;
     outgoingCommand -> roundTripTimeout = 0;
@@ -587,7 +587,7 @@ enet_peer_setup_outgoing_command (ENetPeer * peer, ENetOutgoingCommand * outgoin
     case ENET_PROTOCOL_COMMAND_SEND_UNSEQUENCED:
         outgoingCommand -> command.sendUnsequenced.unsequencedGroup = ENET_HOST_TO_NET_16 (peer -> outgoingUnsequencedGroup);
         break;
-    
+
     default:
         break;
     }
@@ -650,7 +650,7 @@ enet_peer_dispatch_incoming_unreliable_commands (ENetPeer * peer, ENetChannel * 
                 peer -> needsDispatch = 1;
             }
 
-            droppedCommand = startCommand = enet_list_next (currentCommand); 
+            droppedCommand = startCommand = enet_list_next (currentCommand);
        }
     }
 
@@ -681,7 +681,7 @@ enet_peer_dispatch_incoming_reliable_commands (ENetPeer * peer, ENetChannel * ch
          currentCommand = enet_list_next (currentCommand))
     {
        ENetIncomingCommand * incomingCommand = (ENetIncomingCommand *) currentCommand;
-         
+
        if (incomingCommand -> fragmentsRemaining > 0 ||
            incomingCommand -> reliableSequenceNumber != (enet_uint16) (channel -> incomingReliableSequenceNumber + 1))
          break;
@@ -690,7 +690,7 @@ enet_peer_dispatch_incoming_reliable_commands (ENetPeer * peer, ENetChannel * ch
 
        if (incomingCommand -> fragmentCount > 0)
          channel -> incomingReliableSequenceNumber += incomingCommand -> fragmentCount - 1;
-    } 
+    }
 
     if (currentCommand == enet_list_begin (& channel -> incomingReliableCommands))
       return;
@@ -735,14 +735,14 @@ enet_peer_queue_incoming_command (ENetPeer * peer, const ENetProtocol * command,
         if (reliableWindow < currentWindow || reliableWindow >= currentWindow + ENET_PEER_FREE_RELIABLE_WINDOWS - 1)
           goto freePacket;
     }
-                    
+
     switch (command -> header.command & ENET_PROTOCOL_COMMAND_MASK)
     {
     case ENET_PROTOCOL_COMMAND_SEND_FRAGMENT:
     case ENET_PROTOCOL_COMMAND_SEND_RELIABLE:
        if (reliableSequenceNumber == channel -> incomingReliableSequenceNumber)
          goto freePacket;
-       
+
        for (currentCommand = enet_list_previous (enet_list_end (& channel -> incomingReliableCommands));
             currentCommand != enet_list_end (& channel -> incomingReliableCommands);
             currentCommand = enet_list_previous (currentCommand))
@@ -772,7 +772,7 @@ enet_peer_queue_incoming_command (ENetPeer * peer, const ENetProtocol * command,
     case ENET_PROTOCOL_COMMAND_SEND_UNRELIABLE_FRAGMENT:
        unreliableSequenceNumber = ENET_NET_TO_HOST_16 (command -> sendUnreliable.unreliableSequenceNumber);
 
-       if (reliableSequenceNumber == channel -> incomingReliableSequenceNumber && 
+       if (reliableSequenceNumber == channel -> incomingReliableSequenceNumber &&
            unreliableSequenceNumber <= channel -> incomingUnreliableSequenceNumber)
          goto freePacket;
 
@@ -829,9 +829,9 @@ enet_peer_queue_incoming_command (ENetPeer * peer, const ENetProtocol * command,
     incomingCommand -> fragmentsRemaining = fragmentCount;
     incomingCommand -> packet = packet;
     incomingCommand -> fragments = NULL;
-    
+
     if (fragmentCount > 0)
-    { 
+    {
        incomingCommand -> fragments = (enet_uint32 *) enet_malloc ((fragmentCount + 31) / 32 * sizeof (enet_uint32));
        if (incomingCommand -> fragments == NULL)
        {

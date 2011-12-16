@@ -37,7 +37,7 @@ monitors the network conditions from the local host to the foreign
 host such as the mean round trip time and packet loss in this fashion.
 
 @section Sequencing Sequencing
-    
+
 Rather than a single byte stream that complicates the delineation of
 packets, ENet presents connections as multiple, properly sequenced
 packet streams that simplify the transfer of various types of data.
@@ -108,7 +108,7 @@ various types of network congestion by further limiting the volume of
 packets sent.
 
 @section Portability Portability
-    
+
 ENet works on Windows and any other Unix or Unix-like platform
 providing a BSD sockets interface. The library has a small and stable
 code base that can easily be extended to support other platforms and

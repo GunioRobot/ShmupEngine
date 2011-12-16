@@ -36,7 +36,7 @@
 </div>
 <div class="contents">
 
-<p>ENet protocol.  
+<p>ENet protocol.
 <a href="#_details">More...</a></p>
 <code>#include &quot;<a class="el" href="types_8h_source.html">enet/types.h</a>&quot;</code><br/>
 
@@ -105,46 +105,46 @@ typedef union <a class="el" href="union__ENetProtocol.html">_ENetProtocol</a>&nb
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <br/>
-&nbsp;&nbsp;<b>ENET_PROTOCOL_MINIMUM_MTU</b> =  576, 
-<b>ENET_PROTOCOL_MAXIMUM_MTU</b> =  4096, 
-<b>ENET_PROTOCOL_MAXIMUM_PACKET_COMMANDS</b> =  32, 
-<b>ENET_PROTOCOL_MINIMUM_WINDOW_SIZE</b> =  4096, 
+&nbsp;&nbsp;<b>ENET_PROTOCOL_MINIMUM_MTU</b> =  576,
+<b>ENET_PROTOCOL_MAXIMUM_MTU</b> =  4096,
+<b>ENET_PROTOCOL_MAXIMUM_PACKET_COMMANDS</b> =  32,
+<b>ENET_PROTOCOL_MINIMUM_WINDOW_SIZE</b> =  4096,
 <br/>
-&nbsp;&nbsp;<b>ENET_PROTOCOL_MAXIMUM_WINDOW_SIZE</b> =  32768, 
-<b>ENET_PROTOCOL_MINIMUM_CHANNEL_COUNT</b> =  1, 
-<b>ENET_PROTOCOL_MAXIMUM_CHANNEL_COUNT</b> =  255, 
+&nbsp;&nbsp;<b>ENET_PROTOCOL_MAXIMUM_WINDOW_SIZE</b> =  32768,
+<b>ENET_PROTOCOL_MINIMUM_CHANNEL_COUNT</b> =  1,
+<b>ENET_PROTOCOL_MAXIMUM_CHANNEL_COUNT</b> =  255,
 <b>ENET_PROTOCOL_MAXIMUM_PEER_ID</b> =  0xFFF
 <br/>
  }</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><b>_ENetProtocolCommand</b> { <br/>
-&nbsp;&nbsp;<b>ENET_PROTOCOL_COMMAND_NONE</b> =  0, 
-<b>ENET_PROTOCOL_COMMAND_ACKNOWLEDGE</b> =  1, 
-<b>ENET_PROTOCOL_COMMAND_CONNECT</b> =  2, 
-<b>ENET_PROTOCOL_COMMAND_VERIFY_CONNECT</b> =  3, 
+&nbsp;&nbsp;<b>ENET_PROTOCOL_COMMAND_NONE</b> =  0,
+<b>ENET_PROTOCOL_COMMAND_ACKNOWLEDGE</b> =  1,
+<b>ENET_PROTOCOL_COMMAND_CONNECT</b> =  2,
+<b>ENET_PROTOCOL_COMMAND_VERIFY_CONNECT</b> =  3,
 <br/>
-&nbsp;&nbsp;<b>ENET_PROTOCOL_COMMAND_DISCONNECT</b> =  4, 
-<b>ENET_PROTOCOL_COMMAND_PING</b> =  5, 
-<b>ENET_PROTOCOL_COMMAND_SEND_RELIABLE</b> =  6, 
-<b>ENET_PROTOCOL_COMMAND_SEND_UNRELIABLE</b> =  7, 
+&nbsp;&nbsp;<b>ENET_PROTOCOL_COMMAND_DISCONNECT</b> =  4,
+<b>ENET_PROTOCOL_COMMAND_PING</b> =  5,
+<b>ENET_PROTOCOL_COMMAND_SEND_RELIABLE</b> =  6,
+<b>ENET_PROTOCOL_COMMAND_SEND_UNRELIABLE</b> =  7,
 <br/>
-&nbsp;&nbsp;<b>ENET_PROTOCOL_COMMAND_SEND_FRAGMENT</b> =  8, 
-<b>ENET_PROTOCOL_COMMAND_SEND_UNSEQUENCED</b> =  9, 
-<b>ENET_PROTOCOL_COMMAND_BANDWIDTH_LIMIT</b> =  10, 
-<b>ENET_PROTOCOL_COMMAND_THROTTLE_CONFIGURE</b> =  11, 
+&nbsp;&nbsp;<b>ENET_PROTOCOL_COMMAND_SEND_FRAGMENT</b> =  8,
+<b>ENET_PROTOCOL_COMMAND_SEND_UNSEQUENCED</b> =  9,
+<b>ENET_PROTOCOL_COMMAND_BANDWIDTH_LIMIT</b> =  10,
+<b>ENET_PROTOCOL_COMMAND_THROTTLE_CONFIGURE</b> =  11,
 <br/>
-&nbsp;&nbsp;<b>ENET_PROTOCOL_COMMAND_SEND_UNRELIABLE_FRAGMENT</b> =  12, 
-<b>ENET_PROTOCOL_COMMAND_COUNT</b> =  13, 
+&nbsp;&nbsp;<b>ENET_PROTOCOL_COMMAND_SEND_UNRELIABLE_FRAGMENT</b> =  12,
+<b>ENET_PROTOCOL_COMMAND_COUNT</b> =  13,
 <b>ENET_PROTOCOL_COMMAND_MASK</b> =  0x0F
 <br/>
  }</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><b>_ENetProtocolFlag</b> { <br/>
-&nbsp;&nbsp;<b>ENET_PROTOCOL_COMMAND_FLAG_ACKNOWLEDGE</b> =  (1 &lt;&lt; 7), 
-<b>ENET_PROTOCOL_COMMAND_FLAG_UNSEQUENCED</b> =  (1 &lt;&lt; 6), 
-<b>ENET_PROTOCOL_HEADER_FLAG_COMPRESSED</b> =  (1 &lt;&lt; 14), 
-<b>ENET_PROTOCOL_HEADER_FLAG_SENT_TIME</b> =  (1 &lt;&lt; 15), 
+&nbsp;&nbsp;<b>ENET_PROTOCOL_COMMAND_FLAG_ACKNOWLEDGE</b> =  (1 &lt;&lt; 7),
+<b>ENET_PROTOCOL_COMMAND_FLAG_UNSEQUENCED</b> =  (1 &lt;&lt; 6),
+<b>ENET_PROTOCOL_HEADER_FLAG_COMPRESSED</b> =  (1 &lt;&lt; 14),
+<b>ENET_PROTOCOL_HEADER_FLAG_SENT_TIME</b> =  (1 &lt;&lt; 15),
 <br/>
-&nbsp;&nbsp;<b>ENET_PROTOCOL_HEADER_FLAG_MASK</b> =  ENET_PROTOCOL_HEADER_FLAG_COMPRESSED | ENET_PROTOCOL_HEADER_FLAG_SENT_TIME, 
-<b>ENET_PROTOCOL_HEADER_SESSION_MASK</b> =  (3 &lt;&lt; 12), 
+&nbsp;&nbsp;<b>ENET_PROTOCOL_HEADER_FLAG_MASK</b> =  ENET_PROTOCOL_HEADER_FLAG_COMPRESSED | ENET_PROTOCOL_HEADER_FLAG_SENT_TIME,
+<b>ENET_PROTOCOL_HEADER_SESSION_MASK</b> =  (3 &lt;&lt; 12),
 <b>ENET_PROTOCOL_HEADER_SESSION_SHIFT</b> =  12
 <br/>
  }</td></tr>

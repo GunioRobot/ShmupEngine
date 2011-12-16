@@ -5,7 +5,7 @@
 
 #include "list.h"
 
-list * 
+list *
 list_new()
 {
 	list *list = malloc(sizeof(list));
@@ -17,7 +17,7 @@ list_new()
 
 void
 list_destroy(list *l, int recursive)
-{	
+{
 	if (recursive) {
 		list_node *node = l->head;
 		list_node *next = NULL;
@@ -27,28 +27,28 @@ list_destroy(list *l, int recursive)
 			node = next;
 		}
 	}
-	
+
 	free(l);
 }
 
-list_node * 
-list_insert(list *list, void *data) 
+list_node *
+list_insert(list *list, void *data)
 {
 	list_node *node = malloc(sizeof(list_node));
-	
+
 	if (node == NULL) {
 		fprintf(stderr, "Failed to allocate node\n");
 		return NULL;
 	}
-	
+
 	node->data = data;
 	node->next = NULL;
 	node->prev = NULL;
-	
+
 	if (list->size > 0) {
 		node->prev = list->tail;
 		list->tail->next = node;
-		list->tail = node;		
+		list->tail = node;
 	} else {
 		list->head = node;
 		list->tail = node;
@@ -61,7 +61,7 @@ void *
 list_remove(list *list, list_node *node)
 {
 	void *data = node->data;
-	
+
 	if (list->size == 0) {
 		return NULL;
 	} else if (list->size == 1) {
@@ -77,9 +77,9 @@ list_remove(list *list, list_node *node)
 		node->prev->next = node->next;
 		node->next->prev = node->prev;
 	}
-	
+
 	free(node);
 	list->size--;
 	return data;
-	
+
 }
